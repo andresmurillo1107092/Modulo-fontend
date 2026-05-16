@@ -28,3 +28,39 @@ let edad = 25;
 console.log("La edad es:" + (edad > 18 && edad < 60 ? "Es mayor de edad y menor de 65 años" : "No es mayor de edad o es mayor de 60 años"));
 console.log("La edad es:" + (edad < 18 || edad > 60 ? "No es mayor de edad o es mayor de 60 años" : "Es mayor de edad y menor de 65 años"));
 console.log("La edad es:" + (!(edad < 18) ? "Es mayor de edad y menor de 65 años" : "No es mayor de edad o es mayor de 60 años"));
+
+let numero = "";
+let numero3 = 15;
+
+if(numero3 < 10 && numero3 < 20){
+    console.log("numero 3 esVerdadero");
+} else {
+    console.log(" numero 3 es Falso");
+}
+
+// while mientras se cumpla la condicion se ejecuta el bloque de codigo
+let contador = 0;
+while(contador < 15){
+    console.log("fronted");
+    contador = contador + 1;
+
+}   
+
+//for se ejecuta un bloque de codigo un numero determinado de veces
+for(let i = 0; i < 5; i++){
+    console.log("Desarrollo web");
+}
+
+
+let multiplicador = 9 ;
+
+for(let i = 0; i < 11; i++){
+    console.log(multiplicador + " x " + i + " = " + (multiplicador * i));
+}
+
+// concatenacion de cadenas de texto
+let nombre = "Pachito";
+let apellido = "Eche";
+console.log("Hola mi nombre es " + nombre + " " + apellido);
+console.log("hola mi nombre es " + nombre,apellido);
+console.log(`Hola mi nombre es ${nombre} ${apellido}`);//clean code
