@@ -64,3 +64,8 @@ let apellido = "Eche";
 console.log("Hola mi nombre es " + nombre + " " + apellido);
 console.log("hola mi nombre es " + nombre,apellido);
 console.log(`Hola mi nombre es ${nombre} ${apellido}`);//clean code
+
+const mibotonhtml = document.getElementById("miBoton");
+mibotonhtml.addEventListener("click", function(){
+    alert("Hola mundo");
+});
