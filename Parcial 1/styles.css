@@ -1,0 +1,706 @@
+/* --- CONFIGURACIÓN GENERAL Y HEADER GAMER --- */
+:root {
+    --neon-cyan: #00f3ff;
+    --neon-magenta: #ff007f;
+    --dark-bg: rgba(5, 5, 10, 0.85); /* Fondo oscuro semitransparente */
+}
+
+body {
+    margin: 0;
+    background-color: #05050a;
+    font-family: 'Rajdhani', sans-serif;
+    color: #ffffff;
+    padding-top: 80px; /* Espacio para que el banner no se pegue al header fijo */
+}
+
+/* Header Estilo HUD de Nave Espacial */
+.main-header {
+    background-color: var(--dark-bg);
+    backdrop-filter: blur(10px); /* Desenfoque de vidrio muy moderno */
+    -webkit-backdrop-filter: blur(10px);
+    
+    /* Línea inferior de neón cian que conecta con el banner */
+    border-bottom: 2px solid var(--neon-cyan); 
+    box-shadow: 0 4px 20px rgba(0, 243, 255, 0.15);
+    
+    padding: 15px 30px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+    box-sizing: border-box;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+/* Marca / Logo */
+.brand {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+}
+
+.logo-wrapper {
+    background: linear-gradient(135deg, var(--neon-cyan), var(--neon-magenta));
+    padding: 2px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 10px rgba(0, 243, 255, 0.3);
+}
+
+.logo {
+    width: 35px;
+    height: auto;
+    background: #05050a;
+    border-radius: 3px;
+    padding: 2px;
+}
+
+.company-name {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.4rem;
+    font-weight: 900;
+    color: #ffffff;
+    letter-spacing: 2px;
+}
+
+.tech-text {
+    color: var(--neon-cyan);
+    text-shadow: 0 0 8px rgba(0, 243, 255, 0.6);
+}
+
+/* Menú de Opciones */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 30px;
+    align-items: center;
+}
+
+.nav-link {
+    font-family: 'Orbitron', sans-serif;
+    text-decoration: none;
+    color: #a1a1aa;
+    font-weight: 700;
+    font-size: 0.95rem;
+    letter-spacing: 1px;
+    transition: all 0.3s ease;
+    position: relative;
+    padding: 5px 0;
+}
+
+/* Efecto de línea neón al pasar el mouse */
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: var(--neon-magenta);
+    box-shadow: 0 0 8px var(--neon-magenta);
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active-link::after {
+    width: 100%;
+}
+
+.nav-link:hover,
+.nav-link.active-link {
+    color: #ffffff;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+/* Botón de Carrito Gamer (RGB / Pulso) */
+.cart-btn {
+    background: transparent;
+    border: 1px solid var(--neon-magenta);
+    color: #ffffff !important;
+    padding: 8px 18px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: inset 0 0 5px rgba(255, 0, 127, 0.2), 0 0 10px rgba(255, 0, 127, 0.2);
+}
+
+.cart-btn:hover {
+    background: var(--neon-magenta);
+    box-sizing: border-box;
+    box-shadow: 0 0 15px var(--neon-magenta), 0 0 30px rgba(255, 0, 127, 0.5);
+    color: #000000 !important;
+}
+
+.cart-btn:hover .cart-badge {
+    background: #000000;
+    color: var(--neon-magenta);
+}
+
+.cart-text {
+    font-size: 0.85rem;
+}
+
+/* Contador de productos flotante */
+.cart-badge {
+    background: var(--neon-cyan);
+    color: #000000;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.75rem;
+    font-weight: 900;
+    padding: 2px 7px;
+    border-radius: 3px;
+    box-shadow: 0 0 5px var(--neon-cyan);
+    transition: all 0.3s ease;
+}
+
+/* Optimización para celulares */
+@media (max-width: 768px) {
+    .main-header { padding: 15px 15px; }
+    .company-name { font-size: 1.1rem; }
+    .nav-menu { gap: 15px; }
+    .cart-text { display: none; } /* Oculta el texto "CARRITO" en móvil para ahorrar espacio */
+}
+
+/* Contenedor del Banner ------------------------------------------------------------------------------*/
+.banner-container {
+    position: relative;
+    width: 100%;
+    height: 550px; /* Altura ideal para pantallas de escritorio */
+    overflow: hidden;
+    border-bottom: 3px solid #00f3ff;
+    box-shadow: 0 0 20px rgba(0, 243, 255, 0.2);
+}
+
+/* Estructura del Carrusel */
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.8s ease-in-out;
+    display: flex;
+    align-items: center;
+}
+
+.slide.active {
+    opacity: 1;
+    z-index: 1;
+}
+
+/* Imágenes con filtro oscuro Cyberpunk */
+.slide img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(0.4) contrast(1.1) saturate(1.2);
+}
+
+/* Contenido de Texto */
+.slide-content {
+    position: relative;
+    z-index: 2;
+    max-width: 650px;
+    padding: 0 50px;
+    margin-left: 10%;
+    transform: translateY(30px);
+    transition: all 0.8s ease-in-out;
+    opacity: 0;
+}
+
+.slide.active .slide-content {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.tag {
+    font-family: 'Orbitron', sans-serif;
+    color: #ff007f;
+    font-weight: bold;
+    letter-spacing: 3px;
+    font-size: 0.9rem;
+    text-shadow: 0 0 8px #ff007f;
+}
+
+.slide-content h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3.5rem;
+    font-weight: 900;
+    margin: 10px 0;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #fff;
+    text-shadow: 0 0 15px rgba(255, 255, 255, 0.5), 2px 2px 0px #00f3ff;
+}
+
+.slide-content p {
+    font-size: 1.3rem;
+    color: #cbd5e1;
+    margin-bottom: 30px;
+    line-height: 1.5;
+}
+
+/* Botón Estilo Gamer Metálico/Neón */
+.btn-cyber {
+    display: inline-block;
+    padding: 12px 35px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    color: #00f3ff;
+    text-decoration: none;
+    border: 2px solid #00f3ff;
+    background: transparent;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    letter-spacing: 2px;
+}
+
+.btn-cyber:hover {
+    background: #00f3ff;
+    color: #000;
+    box-shadow: 0 0 25px #00f3ff, 0 0 50px rgba(0, 243, 255, 0.5);
+}
+
+/* Flechas de Navegación */
+.nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    background: rgba(0, 0, 0, 0.6);
+    border: 1px solid #00f3ff;
+    color: #00f3ff;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.nav-btn:hover {
+    background: #00f3ff;
+    color: #000;
+    box-shadow: 0 0 15px #00f3ff;
+}
+
+.prev-btn { left: 20px; }
+.next-btn { right: 20px; }
+
+/* Indicadores inferiores (Dots) */
+.carousel-dots {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+    display: flex;
+    gap: 15px;
+}
+
+.dot {
+    width: 35px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.dot.active {
+    background: #ff007f;
+    box-shadow: 0 0 10px #ff007f;
+    width: 50px;
+}
+
+/* Responsivo para pantallas medianas */
+@media (max-width: 768px) {
+    .banner-container { height: 450px; }
+    .slide-content h2 { font-size: 2.2rem; }
+    .slide-content { margin-left: 5%; padding: 0 20px; }
+    .nav-btn { padding: 10px 15px; font-size: 1.2rem; }
+}
+
+/* --- SECCIÓN CATEGORÍAS --- */
+.categories-section {
+    max-width: 1300px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.section-title {
+    margin-bottom: 40px;
+}
+
+.cyber-glitch {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--neon-magenta);
+    letter-spacing: 2px;
+    font-size: 0.85rem;
+    font-weight: bold;
+}
+
+.section-title h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2.2rem;
+    letter-spacing: 1px;
+    margin-top: 5px;
+    text-transform: uppercase;
+}
+
+/* Rejilla de 3 Columnas */
+.grid-categories {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+/* Tarjeta Base */
+.card-cyber {
+    background: rgba(10, 10, 20, 0.6);
+    border: 1px solid rgba(0, 243, 255, 0.2);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Borde Neón Inteligente al pasar el Mouse */
+.card-cyber:hover {
+    transform: translateY(-8px);
+    border-color: var(--neon-cyan);
+    box-shadow: 0 10px 30px rgba(0, 243, 255, 0.15);
+}
+
+/* Efecto de línea de color por tarjeta */
+.card-cyber:nth-child(2):hover { border-color: var(--neon-magenta); box-shadow: 0 10px 30px rgba(255, 0, 127, 0.15); }
+.card-cyber:nth-child(3):hover { border-color: #00ff66; box-shadow: 0 10px 30px rgba(0, 255, 102, 0.15); }
+
+.card-img-box {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    position: relative;
+}
+
+.card-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: saturate(0.8) brightness(0.7);
+    transition: transform 0.5s ease;
+}
+
+.card-cyber:hover .card-img-box img {
+    transform: scale(1.08);
+    filter: saturate(1.2) brightness(0.9);
+}
+
+.card-info {
+    padding: 25px;
+}
+
+.card-info h3 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.3rem;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+}
+
+.card-info p {
+    color: #94a3b8;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    height: 70px; /* Asegura alturas uniformes */
+}
+
+.card-link {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: var(--color-neon, var(--neon-cyan));
+    letter-spacing: 1px;
+}
+
+/*------------------------------------------------------------------------------------------------------*/
+/* --- ESTILOS ADICIONALES PARA EL CATÁLOGO Y CARRITO --- */
+.catalog-body {
+    background-color: #030307;
+}
+
+.catalog-container {
+    max-width: 1300px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+.catalog-header {
+    margin-bottom: 40px;
+    border-left: 4px solid var(--neon-cyan);
+    padding-left: 15px;
+}
+
+/* Grilla de productos cargados dinámicamente */
+.grid-products {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+/* Tarjeta de Producto Individual de Google Sheets */
+.product-card {
+    background: rgba(15, 15, 30, 0.7);
+    border: 1px solid rgba(0, 243, 255, 0.15);
+    border-radius: 6px;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: all 0.3s ease;
+}
+
+.product-card:hover {
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 15px rgba(0, 243, 255, 0.2);
+    transform: translateY(-3px);
+}
+
+.product-img-box {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 4px;
+    background: #000;
+}
+
+.product-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.product-info {
+    margin-top: 15px;
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.product-info h4 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    color: #fff;
+    margin-bottom: 10px;
+}
+
+.product-stock {
+    font-size: 0.8rem;
+    color: #64748b;
+    margin-bottom: 15px;
+}
+
+.product-stock span {
+    color: #00ff66;
+    font-weight: bold;
+}
+
+.product-price-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: auto;
+}
+
+.product-price {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--neon-cyan);
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.btn-add-cart {
+    background: transparent;
+    border: 1px solid var(--neon-magenta);
+    color: #fff;
+    font-family: 'Rajdhani', sans-serif;
+    font-weight: bold;
+    padding: 6px 12px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.btn-add-cart:hover {
+    background: var(--neon-magenta);
+    box-shadow: 0 0 10px var(--neon-magenta);
+    color: #000;
+}
+
+/* --- INTERFAZ DEL CARRITO LATERAL (SIDEBAR) --- */
+.cart-sidebar {
+    position: fixed;
+    top: 0;
+    right: -400px; /* Escondido por defecto */
+    width: 400px;
+    height: 100%;
+    background: #07070f;
+    border-left: 2px solid var(--neon-magenta);
+    box-shadow: -10px 0 30px rgba(0,0,0,0.5);
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    transition: right 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.cart-sidebar.open {
+    right: 0; /* Despliega el carrito */
+}
+
+.cart-sidebar-header {
+    padding: 20px;
+    border-bottom: 1px solid rgba(255, 0, 127, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-sidebar-header h3 {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--neon-magenta);
+}
+
+.close-cart-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+.cart-items-container {
+    padding: 20px;
+    flex-grow: 1;
+    overflow-y: auto;
+}
+
+/* Elementos dentro del carrito */
+.cart-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: rgba(255,255,255,0.03);
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    border-left: 2px solid var(--neon-cyan);
+}
+
+.cart-item-details h5 {
+    font-family: 'Rajdhani', sans-serif;
+    font-size: 1.1rem;
+    margin: 0 0 5px 0;
+}
+
+.cart-item-details p {
+    color: var(--neon-cyan);
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.9rem;
+    margin: 0;
+}
+
+.btn-remove-item {
+    background: none;
+    border: none;
+    color: #ef4444;
+    cursor: pointer;
+    font-size: 1.1rem;
+}
+
+.empty-cart-text {
+    color: #64748b;
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* Panel Matemático Inferior */
+.cart-checkout-panel {
+    background: #0b0b16;
+    padding: 20px;
+    border-top: 1px solid rgba(0, 243, 255, 0.2);
+}
+
+.price-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    color: #94a3b8;
+}
+
+.total-row {
+    color: #fff;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-top: 1px dashed rgba(255,255,255,0.1);
+    padding-top: 10px;
+    margin-bottom: 20px;
+}
+
+.total-row span:last-child {
+    color: var(--neon-cyan);
+}
+
+.btn-checkout {
+    width: 100%;
+    background: linear-gradient(90deg, var(--neon-cyan), var(--neon-magenta));
+    border: none;
+    color: #fff;
+    padding: 12px;
+    font-family: 'Orbitron', sans-serif;
+    font-weight: bold;
+    cursor: pointer;
+    border-radius: 4px;
+    letter-spacing: 1px;
+}
+
+.loading-pulse {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--neon-cyan);
+    padding: 40px;
+    font-family: 'Orbitron', sans-serif;
+    animation: pulse 1.5s infinite alternate;
+}
+
+@keyframes pulse {
+    from { opacity: 0.4; } to { opacity: 1; text-shadow: 0 0 10px var(--neon-cyan); }
+}
+
+@media (max-width: 450px) {
+    .cart-sidebar { width: 100%; right: -100%; }
+}

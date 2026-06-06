@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arsenal Disponible - Nexus Gaming</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body class="catalog-body">
+
+    <header class="main-header">
+        <nav class="navbar">
+            <a href="index.html" class="brand">
+                <span class="company-name">TECNI<span class="tech-text">MELO</span></span>
+            </a>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">VOLVER AL INICIO</a></li>
+                <li>
+                    <button class="nav-link cart-btn" id="openCartBtn">
+                        <span class="cart-icon">🛒</span> 
+                        <span class="cart-text">CARRITO</span>
+                        <span class="cart-badge" id="cartCount">0</span>
+                    </button>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="catalog-container">
+        <div class="catalog-header">
+            <span class="cyber-glitch">// TERMINAL DE COMPRAS</span>
+            <h2 id="catalogTitle">CARGANDO ARMAMENTO...</h2>
+        </div>
+
+        <div class="grid-products" id="productsGrid">
+            <div class="loading-pulse">CONECTANDO CON LA BASE DE DATOS MATRIZ...</div>
+        </div>
+    </main>
+
+    <div class="cart-sidebar" id="cartSidebar">
+        <div class="cart-sidebar-header">
+            <h3>CARRITO DE COMPRAS</h3>
+            <button class="close-cart-btn" id="closeCartBtn">&times;</button>
+        </div>
+        
+        <div class="cart-items-container" id="cartItems">
+            <p class="empty-cart-text">El carrito está vacío. Configura tu arsenal.</p>
+        </div>
+
+        <div class="cart-checkout-panel">
+            <div class="price-row">
+                <span>SUBTOTAL:</span>
+                <span id="subtotalPrice">$0</span>
+            </div>
+            <div class="price-row">
+                <span>IVA (19%):</span>
+                <span id="ivaPrice">$0</span>
+            </div>
+            <div class="price-row total-row">
+                <span>TOTAL NETO:</span>
+                <span id="totalPrice">$0</span>
+            </div>
+            <button class="btn-checkout" onclick="alert('Iniciando protocolo de pago...')">PROCESAR ORDEN //</button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
