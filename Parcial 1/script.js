@@ -153,9 +153,17 @@ document.addEventListener("DOMContentLoaded", () => {
     actualizarInterfazCarrito();
 });
 
-// ==========================================
-// MÓDULO: CATÁLOGO DINÁMICO & API GOOGLE
-// ==========================================
+/* ==========================================================================
+2. MÓDULO: NAVEGACIÓN INTER-PÁGINAS
+   ========================================================================== */
+function abrirCatalogo(categoriaSeleccionada) {
+    localStorage.setItem('categoriaDestino', categoriaSeleccionada.trim().toLowerCase());
+    window.location.href = 'productos.html'; 
+}
+
+/* ==========================================================================
+3. MÓDULO: CATÁLOGO DINÁMICO & RENDERING
+   ========================================================================== */
 function inicializarComponentesCatalogo() {
     const openCartBtn = document.getElementById("openCartBtn");
     const closeCartBtn = document.getElementById("closeCartBtn");
@@ -253,7 +261,6 @@ function eliminarDelCarrito(idEncriptado) {
 }
 
 function actualizarInterfazCarrito() {
-    // Guardar estado en el navegador del cliente
     localStorage.setItem('cartBackup', JSON.stringify(carrito));
 
     // Actualizar contadores numéricos de la burbuja flotante del menú
